@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Northgate Analysis
 
-## Getting Started
+A demo website for a fictional business analysis consultancy, built by [MyClickAid](https://myclickaid.com) for its portfolio gallery.
 
-First, run the development server:
+**Live demo:** https://northgate-demo.derin-obasa.workers.dev/
+
+> **A fictional company.** Northgate Analysis, its team, services, case studies and insights are made up for this demo. No forms send data.
+
+## What it shows
+
+- **Home page:** an animated process map in the hero, a "What do you need help with?" topic strip that points visitors to the right service, animated counters and a process line that draws as you scroll.
+- **Services:** an interactive service explorer with tabs.
+- **Case studies:** a before-and-after comparison view for each project.
+- **Insights:** a filterable list of articles.
+- **About:** the team and approach.
+- **Book a call:** a time-slot picker with a demo confirmation.
+- **Details:** a newsletter form in the footer, scroll animations, reduced-motion support and keyboard-friendly menus.
+
+## Built with
+
+- [Next.js](https://nextjs.org/) (App Router, JavaScript, static export)
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- Fonts: Instrument Serif and Hanken Grotesk, self-hosted with `@fontsource`
+- Hosted on Cloudflare
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+To create the production build (a static site in the `out` folder):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+  _components/   Header, Footer, ProcessMap, ServiceExplorer, Compare, BookCall, ...
+  _libs/         site.js, data.js, pictures.js, helpers.js
+  _styles/       globals.css
+  services/  case-studies/  insights/  about/  book/
+public/          Photos (.webp)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Photos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Photos are optional. Each slot shows a placeholder until you add an image. Put the files in `public/` and register them in `app/_libs/pictures.js`.
 
-## Deploy on Vercel
+| Slot  | File            | Ratio |
+| ----- | --------------- | ----- |
+| Hero  | `ng-hero.webp`  | 4:5   |
+| About | `ng-about.webp` | 4:5   |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site is a static export (`output: "export"` in `next.config.mjs`) and deploys to Cloudflare from this repository. Every push to the main branch rebuilds and redeploys it.
+
+## About MyClickAid
+
+MyClickAid is a bespoke web design studio. This site is one of several demo projects that show what a custom-designed website can look like for different kinds of businesses.
